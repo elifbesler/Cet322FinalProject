@@ -1,0 +1,52 @@
+﻿@model Usey.Models.DashboardViewModel
+
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Dashboard</h1>
+    <div class="total-products">
+        <p>Total Products: @Model.TotalProducts</p>
+    </div>
+    <div class="expiring-products">
+        <p>Expiring Products in Next Month:</p>
+        <ul>
+            @foreach (var product in Model.ExpiringProducts)
+            {
+                <li>@product.Name - Expiration Date: @product.ExpirationDate.ToString("yyyy-MM-dd")</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+.dashboard-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.dashboard-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.total-products {
+    margin-bottom: 20px;
+}
+.expiring-products {
+    margin-top: 20px;
+}
+.expiring-products ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.expiring-products li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+</style>
